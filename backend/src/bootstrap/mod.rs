@@ -10,15 +10,14 @@ use crate::{
     domains::{
         auth::service::AuthService, bookmark::service::BookmarkService,
         comment::service::CommentService, follow::service::FollowService,
-        language::service::LanguageService, post::service::PostService,
-        reaction::service::ReactionService, tag::service::TagService, user::service::UserService,
+        post::service::PostService, reaction::service::ReactionService, tag::service::TagService,
+        user::service::UserService,
     },
     infrastructure::database::repositories::{
         auth_repo::PostgresAuthRepo, bookmark_repo::PostgresBookmarkRepo,
         comment_repo::PostgresCommentRepo, follow_repo::PostgresFollowRepo,
-        language_repo::PostgresLanguageRepo, post_repo::PostgresPostRepo,
-        reaction_repo::PostgresReactionRepo, tag_repo::PostgresTagRepo,
-        user_repo::PostgresUserRepo,
+        post_repo::PostgresPostRepo, reaction_repo::PostgresReactionRepo,
+        tag_repo::PostgresTagRepo, user_repo::PostgresUserRepo,
     },
 };
 
@@ -54,9 +53,6 @@ pub fn run() -> Result<web::Data<AppState>, Box<dyn std::error::Error>> {
     let follow_repo = Arc::new(PostgresFollowRepo::new(db_pool.clone()));
     let follow_service = Arc::new(FollowService::new(follow_repo, user_repo));
 
-    let language_repo = Arc::new(PostgresLanguageRepo::new(db_pool.clone()));
-    let language_service = Arc::new(LanguageService::new(language_repo));
-
     Ok(web::Data::new(AppState {
         config,
         pool: db_pool,
@@ -67,7 +63,6 @@ pub fn run() -> Result<web::Data<AppState>, Box<dyn std::error::Error>> {
         tag_service,
         bookmark_service,
         follow_service,
-        language_service,
         reaction_service,
     }))
 }
