@@ -3,7 +3,6 @@ pub mod bookmark_handler;
 pub mod comment_handler;
 pub mod follow_handler;
 pub mod health_handler;
-pub mod language_handler;
 pub mod manage_handler;
 pub mod personal_handler;
 pub mod post_handler;

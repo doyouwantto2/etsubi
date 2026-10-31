@@ -21,9 +21,6 @@ pub fn public(cfg: &mut web::ServiceConfig) {
     cfg.service(presentation::handlers::follow_handler::list_user_followers);
     cfg.service(presentation::handlers::follow_handler::list_user_following);
 
-    cfg.service(presentation::handlers::language_handler::list_languages);
-    cfg.service(presentation::handlers::language_handler::list_user_languages);
-
     cfg.service(presentation::handlers::reaction_handler::list_post_reactions);
     cfg.service(presentation::handlers::reaction_handler::summary_post_reactions);
 }
@@ -37,10 +34,6 @@ pub fn protected(cfg: &mut web::ServiceConfig) {
     cfg.service(presentation::handlers::personal_handler::check_my_bookmark);
     cfg.service(presentation::handlers::personal_handler::list_my_followers);
     cfg.service(presentation::handlers::personal_handler::list_my_following);
-    cfg.service(presentation::handlers::personal_handler::list_my_languages);
-    cfg.service(presentation::handlers::personal_handler::add_my_language);
-    cfg.service(presentation::handlers::personal_handler::remove_my_language);
-
     cfg.service(presentation::handlers::user_handler::update_user);
 
     cfg.service(presentation::handlers::post_handler::create_post);

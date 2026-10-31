@@ -11,7 +11,6 @@ use crate::presentation::{
             CommentResponse, CreateCommentRequest, UpdateCommentRequest, UpdateCommentStatusRequest,
         },
         follow_dto::{FollowStatusResponse, FollowUserResponse, FollowerStatusResponse},
-        language_dto::LanguageResponse,
         post_dto::{CreatePostRequest, PostResponse, UpdatePostRequest, UpdatePostStatusRequest},
         reaction_dto::{ReactionResponse, ReactionSummaryItem, UpsertReactionRequest},
         tag_dto::TagResponse,
@@ -21,9 +20,8 @@ use crate::presentation::{
         },
     },
     handlers::{
-        auth_handler, bookmark_handler, comment_handler, follow_handler, language_handler,
-        manage_handler, personal_handler, post_handler, reaction_handler, tag_handler,
-        user_handler,
+        auth_handler, bookmark_handler, comment_handler, follow_handler, manage_handler,
+        personal_handler, post_handler, reaction_handler, tag_handler, user_handler,
     },
 };
 
@@ -54,10 +52,6 @@ use crate::presentation::{
         personal_handler::list_my_followers,
         personal_handler::list_my_following,
 
-        personal_handler::list_my_languages,
-        personal_handler::add_my_language,
-        personal_handler::remove_my_language,
-
         user_handler::get_user,
         user_handler::update_user,
 
@@ -80,9 +74,6 @@ use crate::presentation::{
         follow_handler::unfollow_user,
         follow_handler::list_user_followers,
         follow_handler::list_user_following,
-
-        language_handler::list_languages,
-        language_handler::list_user_languages,
 
         reaction_handler::list_post_reactions,
         reaction_handler::summary_post_reactions,
@@ -126,8 +117,6 @@ use crate::presentation::{
 
         FollowUserResponse, FollowStatusResponse, FollowerStatusResponse,
 
-        LanguageResponse,
-
         ReactionResponse, ReactionSummaryItem, UpsertReactionRequest,
     )),
     tags(
@@ -139,7 +128,6 @@ use crate::presentation::{
         (name = "comment",   description = "Comment management"),
         (name = "bookmark",  description = "Bookmarks"),
         (name = "follow",    description = "Follow relationships"),
-        (name = "language",  description = "Languages"),
         (name = "reaction",  description = "Post reactions (emoji)"),
         (name = "manage",    description = "Moderation endpoints"),
     ),
