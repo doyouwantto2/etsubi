@@ -4,6 +4,7 @@ CREATE TABLE users (
     email TEXT NOT NULL UNIQUE,
     school TEXT,
     address TEXT,
+    language TEXT NOT NULL,
     password TEXT NOT NULL,
     avatar_url TEXT,
     bio TEXT,

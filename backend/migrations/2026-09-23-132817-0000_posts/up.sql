@@ -3,6 +3,7 @@ CREATE TABLE posts (
     author_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     content TEXT,
+    language TEXT NOT NULL,
     view_count INTEGER NOT NULL DEFAULT 0,
     status TEXT NOT NULL DEFAULT 'published'
         CHECK (status IN ('published', 'hidden')),
