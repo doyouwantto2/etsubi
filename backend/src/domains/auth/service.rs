@@ -7,7 +7,7 @@ use crate::{
     domains::{auth::error::AuthError, auth::repository::AuthRepository},
     infrastructure::{
         database::models::entities::User,
-        security::{
+        helper::auth::{
             jwt::create_token,
             password::{hash_password, verify_password},
         },
@@ -86,7 +86,7 @@ impl AuthService {
     }
 
     pub fn authenticate(&self, token: &str) -> Result<User, AuthError> {
-        let claims = crate::infrastructure::security::jwt::verify_token(token, &self.jwt_key)
+        let claims = crate::infrastructure::helper::auth::jwt::verify_token(token, &self.jwt_key)
             .map_err(|_| AuthError::InvalidToken)?;
 
         let user = self
