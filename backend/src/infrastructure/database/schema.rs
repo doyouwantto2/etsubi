@@ -9,18 +9,6 @@ diesel::table! {
 }
 
 diesel::table! {
-    consent_records (id) {
-        id -> Uuid,
-        user_id -> Uuid,
-        purpose -> Text,
-        document_version -> Text,
-        ip_address -> Nullable<Text>,
-        user_agent -> Nullable<Text>,
-        granted_at -> Timestamptz,
-    }
-}
-
-diesel::table! {
     comment_translation (original_comment_id, language) {
         original_comment_id -> Uuid,
         language -> Text,
@@ -45,6 +33,18 @@ diesel::table! {
         created_at -> Timestamptz,
         updated_at -> Timestamptz,
         deleted_at -> Nullable<Timestamptz>,
+    }
+}
+
+diesel::table! {
+    consent_records (id) {
+        id -> Uuid,
+        user_id -> Uuid,
+        purpose -> Text,
+        document_version -> Text,
+        ip_address -> Nullable<Text>,
+        user_agent -> Nullable<Text>,
+        granted_at -> Timestamptz,
     }
 }
 
